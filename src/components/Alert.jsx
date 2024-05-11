@@ -48,22 +48,45 @@
 
 // ! Композиція класів
 
-import "./Alert.css";
+// import "./Alert.css";
+
+// // src/components/Alert.jsx
+
+// import "./Alert.css";
+
+// export const Alert = ({ variant, outlined, elevated, children }) => {
+//   const classNames = ["alert", variant];
+
+//   if (outlined) {
+// 		classNames.push("is-outlined");
+// 	}
+
+//   if (elevated) {
+// 		classNames.push("is-elevated");
+// 	}
+
+//   return <p className={classNames.join(" ")}>{children}</p>;
+// };
+
+// ! Бібліотека clsx
 
 // src/components/Alert.jsx
 
+// src/components/Alert.jsx
+
+import clsx from "clsx";
 import "./Alert.css";
 
 export const Alert = ({ variant, outlined, elevated, children }) => {
-  const classNames = ["alert", variant];
-
-  if (outlined) {
-		classNames.push("is-outlined");
-	}
-
-  if (elevated) {
-		classNames.push("is-elevated");
-	}
-
-  return <p className={classNames.join(" ")}>{children}</p>;
+  return (
+    <p
+      className={clsx("alert", variant, {
+        "is-outlined": outlined,
+        "is-elevated": elevated,
+      })}
+    >
+      {children}
+    </p>
+  );
 };
+
