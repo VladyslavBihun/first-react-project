@@ -72,17 +72,55 @@
 
 // src/components/Alert.jsx
 
+// import clsx from "clsx";
+// import "./Alert.css";
+
+// export const Alert = ({ variant, outlined, elevated, children }) => {
+//   return (
+//     <p
+//       className={clsx("alert", variant, {
+//         "is-outlined": outlined,
+//         "is-elevated": elevated,
+//       })}
+//     >
+//       {children}
+//     </p>
+//   );
+// };
+
+//! модульність CSS
+
+// import clsx from "clsx";
+// import css from "./Alert.module.css";
+
+// // console.log(css); // { alert: "Alert_alert_ax7yz" }
+
+// export const Alert = ({ variant, children }) => {
+//   return <p className={clsx(css.alert, css[variant])}>{children}</p>;
+// };
+
+// ! Властивість composes
+
 // src/components/Alert.jsx
 
+// import css from "./Alert.module.css";
+
+// export const Alert = ({ variant, children }) => {
+//   return <p className={css[variant]}>{children}</p>;
+// };
+
+
+// ! Властивість composes бібліотека clsx
+
 import clsx from "clsx";
-import "./Alert.css";
+import css from "./Alert.module.css";
 
 export const Alert = ({ variant, outlined, elevated, children }) => {
   return (
     <p
-      className={clsx("alert", variant, {
-        "is-outlined": outlined,
-        "is-elevated": elevated,
+      className={clsx(css[variant], {
+        [css.isOutlined]: outlined,
+        [css.isElevated]: elevated,
       })}
     >
       {children}
